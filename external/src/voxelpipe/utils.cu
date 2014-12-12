@@ -27,6 +27,10 @@
 
 #include <voxelpipe/utils.h>
 
+namespace voxelpipe {
+
 texture<float4> tex_vertices;
 texture<int4>   tex_triangles;
 texture<int4>   tex_tri_bbox;
+
+}

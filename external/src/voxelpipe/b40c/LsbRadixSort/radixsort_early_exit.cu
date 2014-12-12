@@ -470,15 +470,15 @@ public:
 	{
 		// Compute work distribution
 		CtaDecomposition work_decomposition;
-		int grid_size = GridSize(problem_storage.num_elements);
-		GetWorkDecomposition(problem_storage.num_elements, grid_size, work_decomposition);
+		int grid_size = this->GridSize(problem_storage.num_elements);
+		this->GetWorkDecomposition(problem_storage.num_elements, grid_size, work_decomposition);
 
-		PreSort(problem_storage, 2);
+		this->PreSort(problem_storage, 2);
 		
 		Base::template DigitPlacePass<0, 4, 0,  PreprocessKeyFunctor<K>,      NopFunctor<ConvertedKeyType> >(grid_size, problem_storage, work_decomposition);
 		Base::template DigitPlacePass<1, 4, 4,  NopFunctor<ConvertedKeyType>, PostprocessKeyFunctor<K> >(grid_size, problem_storage, work_decomposition); 
 
-		PostSort(problem_storage, 2);
+		this->PostSort(problem_storage, 2);
 
 		return cudaSuccess;
 	}
@@ -518,17 +518,17 @@ public:
 	{
 		// Compute work distribution
 		CtaDecomposition work_decomposition;
-		int grid_size = GridSize(problem_storage.num_elements);
-		GetWorkDecomposition(problem_storage.num_elements, grid_size, work_decomposition);
+		int grid_size = this->GridSize(problem_storage.num_elements);
+		this->GetWorkDecomposition(problem_storage.num_elements, grid_size, work_decomposition);
 
-		PreSort(problem_storage, 4);
+		this->PreSort(problem_storage, 4);
 		
 		Base::template DigitPlacePass<0, 4, 0,  PreprocessKeyFunctor<K>,      NopFunctor<ConvertedKeyType> >(grid_size, problem_storage, work_decomposition);
 		Base::template DigitPlacePass<1, 4, 4,  NopFunctor<ConvertedKeyType>, NopFunctor<ConvertedKeyType> >(grid_size, problem_storage, work_decomposition); 
 		Base::template DigitPlacePass<2, 4, 8,  NopFunctor<ConvertedKeyType>, NopFunctor<ConvertedKeyType> >(grid_size, problem_storage, work_decomposition); 
 		Base::template DigitPlacePass<3, 4, 12, NopFunctor<ConvertedKeyType>, PostprocessKeyFunctor<K> >(grid_size, problem_storage, work_decomposition); 
 
-		PostSort(problem_storage, 4);
+		this->PostSort(problem_storage, 4);
 
 		return cudaSuccess;
 	}
@@ -568,10 +568,10 @@ public:
 	{
 		// Compute work distribution
 		CtaDecomposition work_decomposition;
-		int grid_size = GridSize(problem_storage.num_elements);
-		GetWorkDecomposition(problem_storage.num_elements, grid_size, work_decomposition);
+		int grid_size = this->GridSize(problem_storage.num_elements);
+		this->GetWorkDecomposition(problem_storage.num_elements, grid_size, work_decomposition);
 
-		PreSort(problem_storage, 8);
+		this->PreSort(problem_storage, 8);
 
 		Base::template DigitPlacePass<0, 4, 0,  PreprocessKeyFunctor<K>,      NopFunctor<ConvertedKeyType> >(grid_size, problem_storage, work_decomposition);
 		Base::template DigitPlacePass<1, 4, 4,  NopFunctor<ConvertedKeyType>, NopFunctor<ConvertedKeyType> >(grid_size, problem_storage, work_decomposition); 
@@ -582,7 +582,7 @@ public:
 		Base::template DigitPlacePass<6, 4, 24, NopFunctor<ConvertedKeyType>, NopFunctor<ConvertedKeyType> >(grid_size, problem_storage, work_decomposition); 
 		Base::template DigitPlacePass<7, 4, 28, NopFunctor<ConvertedKeyType>, PostprocessKeyFunctor<K> >    (grid_size, problem_storage, work_decomposition); 
 
-		PostSort(problem_storage, 8);
+		this->PostSort(problem_storage, 8);
 
 		return cudaSuccess;
 	}
@@ -622,10 +622,10 @@ public:
 	{
 		// Compute work distribution
 		CtaDecomposition work_decomposition;
-		int grid_size = GridSize(problem_storage.num_elements);
-		GetWorkDecomposition(problem_storage.num_elements, grid_size, work_decomposition);
+		int grid_size = this->GridSize(problem_storage.num_elements);
+		this->GetWorkDecomposition(problem_storage.num_elements, grid_size, work_decomposition);
 
-		PreSort(problem_storage, 16);
+		this->PreSort(problem_storage, 16);
 		
 		Base::template DigitPlacePass<0,  4, 0,  PreprocessKeyFunctor<K>,      NopFunctor<ConvertedKeyType> >(grid_size, problem_storage, work_decomposition);
 		Base::template DigitPlacePass<1,  4, 4,  NopFunctor<ConvertedKeyType>, NopFunctor<ConvertedKeyType> >(grid_size, problem_storage, work_decomposition); 
@@ -644,7 +644,7 @@ public:
 		Base::template DigitPlacePass<14, 4, 56, NopFunctor<ConvertedKeyType>, NopFunctor<ConvertedKeyType> >(grid_size, problem_storage, work_decomposition); 
 		Base::template DigitPlacePass<15, 4, 60, NopFunctor<ConvertedKeyType>, PostprocessKeyFunctor<K> >    (grid_size, problem_storage, work_decomposition); 
 
-		PostSort(problem_storage, 16);
+		this->PostSort(problem_storage, 16);
 
 		return cudaSuccess;
 	}
